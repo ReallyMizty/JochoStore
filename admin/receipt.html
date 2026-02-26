@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ใบเสร็จรับเงิน</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+        }
+        .receipt-container {
+            width: 100%;
+            max-width: 600px; /* จำกัดความกว้างเพื่อให้พอดีกับ A4 */
+            margin: 40px auto;
+            padding: 30px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            font-size: 16px;
+        }
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #f2f2f2;
+            padding-bottom: 20px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            color: #333;
+            font-size: 36px;
+            margin: 0;
+        }
+        .header p {
+            color: #777;
+            font-size: 18px;
+            margin: 5px 0;
+        }
+        .details {
+            font-size: 16px;
+            margin-bottom: 20px;
+        }
+        .details p {
+            margin: 5px 0;
+        }
+        .items-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        .items-table th, .items-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .items-table th {
+            background-color: #f8f8f8;
+            color: #555;
+        }
+        .items-table td {
+            color: #333;
+        }
+        .items-table tr:hover {
+            background-color: #f1f1f1;
+        }
+        .total {
+            text-align: right;
+            font-size: 18px;
+            font-weight: bold;
+            margin-top: 20px;
+            color: #e74c3c;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            color: #777;
+            font-size: 14px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .print-btn {
+            display: block;
+            width: 200px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            font-size: 16px;
+            text-align: center;
+            margin: 30px auto;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .print-btn:hover {
+            background-color: #2980b9;
+        }
+        
+        /* ตั้งค่าให้พิมพ์ได้พอดีกระดาษ A4 */
+        @media print {
+            .print-btn {
+                display: none; /* ซ่อนปุ่มพิมพ์เมื่อพิมพ์ */
+            }
+            body {
+                background-color: #fff;
+                margin: 0;
+                padding: 0;
+            }
+            .receipt-container {
+                width: 100%;
+                max-width: 600px;
+                margin: 0;
+                padding: 20px;
+                box-shadow: none;
+                border-radius: 0;
+            }
+            @page {
+                size: A4;
+                margin: 10mm; /* ขอบกระดาษ */
+            }
+        }
+    </style>
+</head>
+<body>
+
+<div class="receipt-container">
+    <div class="header">
+        <h1>ใบเสร็จรับเงิน</h1>
+        <p>เลขที่ใบเสร็จ: 123456789</p>
+        <p>วันที่: 12 กุมภาพันธ์ 2025</p>
+    </div>
+
+    <div class="details">
+        <p><strong>ชื่อลูกค้า:</strong> คุณสมชาย</p>
+        <p><strong>ที่อยู่:</strong> 123/4 ถนนสุขสวัสดิ์ กรุงเทพฯ</p>
+    </div>
+
+    <table class="items-table">
+        <thead>
+            <tr>
+                <th>รายการ</th>
+                <th>จำนวน</th>
+                <th>ราคา</th>
+                <th>ราคารวม</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>สินค้า 1</td>
+                <td>2</td>
+                <td>฿100</td>
+                <td>฿200</td>
+            </tr>
+            <tr>
+                <td>สินค้า 2</td>
+                <td>1</td>
+                <td>฿250</td>
+                <td>฿250</td>
+            </tr>
+            <tr>
+                <td>สินค้า 3</td>
+                <td>3</td>
+                <td>฿50</td>
+                <td>฿150</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <div class="total">
+        <p>รวมเงินทั้งสิ้น: ฿600</p>
+    </div>
+
+    <div class="footer">
+        <p>ขอบคุณที่ใช้บริการ</p>
+        <p>บริษัทของเราอยู่เคียงข้างคุณเสมอ</p>
+    </div>
+
+    <button class="print-btn" onclick="window.print()">พิมพ์ใบเสร็จ</button>
+</div>
+
+</body>
+</html>
